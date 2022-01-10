@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmls:sec="http://www.thymeleaf.org/thymeleaf-extrass-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Prolifics Project Management</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+		</div>
+	</nav><br>
+<h3> Profile Information </h3><br>
+<div class ="col-sm-8 text-left">
+<form>
+<p>
+<label>FirstName</label>
+<input type="text" th:value="${user.firstname}"/>
+
+</p>
+<p>
+<label>LastName</label>
+<input type="text" th:value="${user.lastname}"/>
+
+</p>
+<p>
+<label>UserName</label>
+<input type="text" th:value="${user.username}"/>
+
+</p>
+
+<p>
+<label>Phone</label>
+<input type="text" th:value="${user.phone}"/>
+
+</p>
+<p>
+<label>Address</label>
+<input type="text" th:value="${user.address}"/>
+
+</p>
+<p>
+<label>RoleName</label>
+<input type="text" th:value="${user.rolename}"/>
+
+</p>
+<p>
+<label>RoleType</label>
+<input type="text" th:value="${user.authorities}"/>
+
+<!-- </p>
+<label>ProjectName</label>
+<input type="text" th:value="${user.Allocation}"/>
+
+</p>  -->
+</form>
+</div>
+</body>
+</html>

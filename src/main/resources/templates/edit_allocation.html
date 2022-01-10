@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmls:sec="http://www.thymeleaf.org/thymeleaf-extrass-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Prolifics Project Management</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Prolifics Project Management</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/projects}">Project</a>
+			    <!--  <li class="nav-item"><a class="nav-link" th:href="@{/roles}">Role</a> -->
+			     <li class="nav-item"><a class="nav-link" th:href="@{/allocations}">Project Allocation</a>
+			     <li> <a class="nav-link" 
+			    th:href="@{/user_profile}" sec:authentication="principal.firstname"></a></li>
+			     
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Update Allocation</h1>
+				<div class="card-body">
+					<form th:action="@{/allocations/{id} (id=${allocation.id})}" th:object="${allocation}" method="POST">
+						<div classess="form-group row">
+							<label class="col-form-label col-sm-4">Employees</label>
+							<div class= "col-sm-8" text-left>
+							<th:block th:each="employee :${listEmployee}">
+							<div>
+							<input type ="radio" th:field="*{employeename}" th:text="${employee.username}" th:value="${employee.username}"> 
+							</div>
+							</div>
+							</div>
+							<div classess="form-group row">
+							<label class="col-form-label col-sm-4">Project</label>
+							<div class= "col-sm-8" text-left>
+							<th:block th:each="project :${listProject}">
+							<div>
+							<!-- <select th:field="*{projectname}">
+							 <option value="default">Select Project</option>
+							 <option th:text="${project.projectname}" th:value="${project.projectid}" />
+							 </select> -->
+							<input type ="radio" th:field="*{projectname}" th:text="${project.projectname}" th:value="${project.projectname}"> 
+							</div>
+							</div>
+							</div>
+							 <br>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

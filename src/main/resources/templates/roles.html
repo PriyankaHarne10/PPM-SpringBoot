@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmls:sec="http://www.thymeleaf.org/thymeleaf-extrass-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Prolifics Project Management</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Prolifics Project Management</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{/employees}">Employee</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/roles}">Role</a>
+				</li>
+				<li> <a class="nav-link" 
+			    th:href="@{/user_profile}" sec:authentication="principal.firstname"></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<h1>List Roles</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{/roles/new}" class="btn btn-primary btn-sm mb-3">Add
+					Role</a>
+			</div>
+		</div>
+		<table class="table table-striped table-bordered">
+
+			<thead class="table-dark">
+				<tr>
+				    <th>RoleId</th> 
+				    <th>RoleType</th>
+					
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="role: ${roles}">
+				<td th:text="${role.roleid}"></td>
+					<td th:text="${role.roletype}"></td>
+					<!-- <td th:text="${role.rolename}"></td> -->
+					<td>
+					<a th:href="@{/roles/edit/{id}(id=${role.roleid})}" class="btn btn-primary">Update</a>
+					
+					<a th:href="@{/roles/{id}(id=${role.roleid})}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>
